@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <%- include("./layouts/header") %>
+
+    <div class="py-5 flex justify-center items-center gap-8 flex-wrap bg-zinc-200">
+        <% listings.reverse().forEach(item=>{ %>
+            <a href="/<%= item._id %>/view">
+                <div class="w-48 bg-white rounded-lg pb-3">
+                    <div class="bg-red-500 h-48 w-full overflow-hidden rounded-lg">
+                        <img src="<%= item.image %>" class="w-full h-full object-cover rounded-lg hover:scale-110 transition-all duration-300">
+                    </div>
+                    <h1 class="tracking-tighter font-semibold text-center text-lg leading-none mt-3 whitespace-nowrap overflow-hidden text-ellipsis pl-1"><%= item.title %></h1>
+                    <p class="rounded-full bg-red-200 text-center w-fit font-semibold py-1 px-2 text-sm mx-auto mt-1">&#8377;<%= item.price.toLocaleString("en-IN") %>/- Per Night</p>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+
+
+
+    <%- include("./layouts/footer") %>
+</body>
+</html>
